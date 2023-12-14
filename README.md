@@ -2,9 +2,9 @@
 
 ## 数据集概况
 
-本数据集为基于医疗泌尿专科知识构造的QA推理数据集，由蚂蚁集团医疗大模型团队（AntGroup Medical LLM）与上海交通大学医学院附属仁济医院泌尿科（Department of Urology, Shanghai Jiao Tong University School of Medicine Affiliated Renji Hospital)专家团队合作研发，简称为RJUA-QA Datasets。数据来源于医生参考临床经验中真实患者情况，改写的虚拟患者临床数据，不涉及任何医患隐私数据，经AI模型和专家团队处理校验，构建为问答对(Q-context-A)。
+RJUA-QA（RenJi hospital department of Urology and Antgroup collaborative Question and Answer dataset）是一个创新性的医疗泌尿专科QA推理数据集。这一数据集是由蚂蚁集团医疗大模型团队（AntGroup Medical LLM）与上海交通大学医学院附属仁济医院泌尿科（Department of Urology, Shanghai Jiao Tong University School of Medicine Affiliated Renji Hospital）的专家团队联手打造。数据集的开发旨在将真实临床经验中的患者数据转化为虚拟的患者临床对话，以问答对(Q-context-A)的形式表现。此过程涉及AI技术和专家团队的深度合作，严格保障不涉及任何医患个人隐私。
 
-本数据集包含2132个QA问答对，Context来自于中国泌尿外科和男科疾病诊断治疗指南。Question为虚拟患者临床数据，Answer为大模型生成后由泌尿科专家团队标注。虚拟患者的临床参考数据覆盖2019-2023连续5年的时间跨度，包括门诊诊疗、急诊抢救、住院手术和操作、以及日常科普等多形式的资源。病种涵盖泌尿系肿瘤、泌尿系结石、前列腺增生、男性、尿控、泌尿道整复、小儿泌尿、肾移植等10个亚专业，病种覆盖率占泌尿科就诊患者的97.6%。数据集由上海仁济医院泌尿科医生团队参与构建，确保医疗领域专科数据的真实性、精准度和可靠性。
+RJUA-QA数据集共含2132个问答对，每对问答由改写自患者临床病例的问题(Question)、专家提供的回答(Answer)以及相关的推理上下文(Context)构成。这些上下文信息源自中国泌尿外科和男科疾病诊断治疗指南。本数据集的内容丰富，包含了从2019年至2023年期间收集的泌尿科疾病数据。这些数据涵盖了门诊诊断、急诊抢救、住院手术及日常科普等多种医疗情境，确保了数据集在多个维度上的全面性和深度。专注于泌尿科的10个子专业领域，包括但不限于泌尿系肿瘤、结石、前列腺疾病、男性健康、尿控制障碍、泌尿道修复手术、儿童泌尿疾病和肾脏移植，该数据集涵盖的病种占泌尿科就诊患者的高达97.6%。由上海仁济医院泌尿科的专业医生团队参与构建，RJUA-QA数据集不仅确保了数据的真实性和准确性，还提供了在实际医疗环境中的深度应用价值。
 
 ## 数据集特点与价值
 
@@ -18,7 +18,7 @@
 
 ### 数据格式
 
-问题、文档和答案均以纯文本形式存储，以Json格式提供。
+问题、文档和答案均以纯文本形式存储，以JsonLines格式提供。
 
 数据集中划分为3个文件，其中训练集和验证集用于模型训练和验证，测试集用于模型推理指标评测。
 
@@ -28,26 +28,27 @@
 
 每个文件的具体字段包括：
 
-- 数据标号：id
-- Question: 问题
-- Context: 参考文本
-- Answer: 答案
-- Disease：诊断疾病
-- Advice：诊疗建议
+- **数据标号**：id
+- **Question**: 问题
+- **Context**: 参考文本
+- **Answer**: 答案
+- **Disease**：诊断疾病
+- **Advice**：诊疗建议
 
 ### 推理评估指标
 
 本数据集设计的评测任务主要目标是针对基于虚拟患者问题以及专科医生回答，待评测模型需参考医生给出的相关医学知识作为context，比较模型产出的回答结果与专科医生回答结果的一致性。具体评估指标设计如下：
 
-- **F1**：推理正确性指标，计算F1分数来评估疾病诊断及治疗方案的准确程度。
-  - 精确率：P=TP/(TP+FP)
-  - 召回率：R=TP/(TP+FN)
-  - F1 = 2PR/(P+R)
-  - F1 = average((2*F1_disease + F1_advice)/ 3)
-- **RougeL**：对话相关性指标，计算Rouge-L来评估对话回复整体和医生回复的一致程度。
-  - P = LCS(S1, S2)/len(S1)
-  - R = LCS(S1, S2)/len(S2)
-  - Rouge-L = 2PR/(P+R)
+1. **F1 Score**:
+   - Precision (P): \( P = \frac{TP}{TP + FP} \)
+   - Recall (R): \( R = \frac{TP}{TP + FN} \)
+   - F1 Score: \( F1 = \frac{2PR}{P + R} \)
+   - Average F1 Score: \( F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right) \)
+
+2. **RougeL Score**:
+   - P (Precision): \( P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)} \)
+   - R (Recall): \( R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)} \)
+   - Rouge-L: \( \text{Rouge-L} = \frac{2PR}{P + R} \)
 
 ### 引用
 

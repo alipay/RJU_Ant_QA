@@ -67,9 +67,9 @@ RJUA-QA数据集共含2132个问答对，每对问答由医生根据临床经验
 ### 引用
 
 如果你觉得我们的工作有帮助的话，使用了我们的数据集，请引用下列说明，后续我们会持续优化数据集，并更新可引用的arxiv论文。
-> comming soon.
+> Lyu, S., Chi, C., Cai, H., Shi, L., Yang, X., Liu, L., Chen, X., Zhao, D., Zhang, Z., Lyu, X., Zhang, M., Li, F., Ma, X., Shen, Y., Gu, J., Xue, W., & Huang, Y. 2023. RJUA-QA: A Comprehensive QA Dataset for Urology. arXiv:2312.09785.
 
-如有任何关于数据集的问题或建议，请通过以下方式与我们联系：chichenfei@renji.com，huangyiran@renji.com, hongbo.chb@antgroup.com , zhanying@antgroup.com
+如有任何关于数据集的问题或建议，请通过以下方式与我们联系: chichenfei@renji.com, huangyiran@renji.com, hongbo.chb@antgroup.com, zhanying@antgroup.com
 
 **注意**：在使用数据集时，请确保遵循相关法律法规和数据隐私政策。
 

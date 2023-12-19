@@ -1,57 +1,60 @@
-# RJUA-QADatasets: 蚂蚁-仁济泌尿专科QA数据集
+# RJUA-QADatasets: Ant-Renji Urology Specialty QA Dataset
+[查看中文版本](README_cn.md)
+## Dataset Overview
 
-## 数据集概况
+The RJUA-QA (RenJi hospital department of Urology and Antgroup collaborative Question and Answer dataset) is an innovative medical urology specialty QA inference dataset. This dataset is a collaborative creation by the AntGroup Medical LLM (Large Language Model) team and the expert team from the Department of Urology at Renji Hospital, affiliated with Shanghai Jiao Tong University School of Medicine. The development of this dataset aims to transform real clinical patient data into virtual patient clinical dialogues, presented in a Q-context-A (Question-context-Answer) format. The dataset's production involves a deep collaboration between AI technology and expert teams, ensuring high efficiency and accuracy. **The case data in this dataset are written by professional doctors based on clinical experience, hence not involving any personal privacy of patients and doctors**.
 
-RJUA-QA（RenJi hospital department of Urology and Antgroup collaborative Question and Answer dataset）是一个创新性的医疗泌尿专科QA推理数据集。这一数据集是由蚂蚁集团医疗大模型团队（AntGroup Medical LLM）与上海交通大学医学院附属仁济医院泌尿科（Department of Urology, Shanghai Jiao Tong University School of Medicine Affiliated Renji Hospital）的专家团队联手打造。数据集的开发旨在将真实临床经验中的患者数据转化为虚拟的患者临床对话，以问答对(Q-context-A)的形式展现，数据集的生产由AI技术和专家团队深度合作，提高效率的同时数据集的准确性也有严格的保证。**本数据集的病例数据由专业医生的根据临床经验编写而成，因此不涉及任何医患个人隐私**。
+The RJUA-QA dataset contains 2132 Q&A pairs. Each pair is composed of a question (Question) written by doctors based on clinical experience, an answer (Answer) provided by experts, and related reasoning context (Context). The context information is derived from Chinese guidelines for the diagnosis and treatment of urological and andrological diseases. The dataset includes urological disease data collected from 2019 to 2023, covering various medical scenarios such as outpatient diagnosis, emergency rescue, hospital surgery, and daily health education. It ensures comprehensiveness and depth across multiple dimensions. The dataset focuses on 10 sub-specialties in urology, including but not limited to urological tumors, stones, prostate diseases, male health, urinary control disorders, urinary tract reconstructive surgery, pediatric urological diseases, and kidney transplantation, covering over 97.6% of urology patients. Constructed by the professional medical team of Renji Hospital's Department of Urology, the RJUA-QA dataset ensures the authenticity and accuracy of the data and provides deep practical value in real medical environments.
 
-RJUA-QA数据集共含2132个问答对，每对问答由医生根据临床经验编写的问题(Question)、专家提供的回答(Answer)以及相关的推理上下文(Context)构成，这些上下文信息源自中国泌尿外科和男科疾病诊断治疗指南。本数据集包含了从2019年至2023年期间收集的泌尿科疾病数据，这些数据涵盖了门诊诊断、急诊抢救、住院手术及日常科普等多种医疗情境，确保了数据集在多个维度上的全面性和深度。数据集专注于泌尿科的10个子专业领域，包括但不限于泌尿系肿瘤、结石、前列腺疾病、男性健康、尿控制障碍、泌尿道修复手术、儿童泌尿疾病和肾脏移植，涵盖了泌尿科就诊97.6%以上患者的情况。由上海仁济医院泌尿科的专业医生团队参与构建，RJUA-QA数据集不仅确保了数据的真实性和准确性，还提供了在实际医疗环境中的深度应用价值。
+## Dataset Features and Value
 
-## 数据集特点与价值
+- **Real Clinical Background**: The data come from virtual cases written by clinical experts based on consultation experience, making the dataset more realistic and ensuring data privacy.
+- **Diversity**: The questions cover multiple aspects of urology, accounting for 95% of all urological diseases.
+- **Interpretability**: The dataset provides detailed specialty evidence and reasoning processes.
 
-- **真实临床背景**：数据来源于由临床专家根据问诊经验编写编写而来的虚拟病例，数据集更加真实，同时也保证了数据的隐私性。
-- **多样性**：问题涵盖了泌尿专科的多个方面，占比泌尿专科全病种的95%。
-- **可解释性**：提供详细的专科证据和推理过程。
+This dataset aims to enhance the capabilities of large language models in medical diagnostic reasoning and serves as a benchmark for applications in serious and controllable scenarios. The team will continue to optimize the dataset, supporting research and application of artificial intelligence in the medical field.
 
-本数据集旨在提高大型语言模型在医疗诊断推理方面的能力，并作为在严肃可控场景下应用的评测基准。后续团队将持续优化数据集，为人工智能在医疗领域的研究与应用提供有力支持。
+## Dataset Annotation Process and Standards
 
-## 数据集标注流程与标准
+### Data Cleaning
+The main purpose is to remove irrelevant or redundant information from the data, including correcting spelling errors, unifying formats, deleting duplicate data, and handling missing or incomplete data entries.
 
-### 数据清洗
+### Data Denoising
+The goal is to identify and eliminate any noise in the data that might affect subsequent analysis. This noise mainly arises from errors during data collection, transmission, or processing. Methods like filtering, outlier detection, and statistical approaches are used to smooth the data.
 
-### 数据去噪
+### Structured Data Extraction
+The aim is to systematically organize and transform the data into formats suitable for analysis or model development. This includes parsing text data to extract relevant fields, converting unstructured or semi-structured data into tabular formats, and classifying or encoding the data to simplify subsequent processing steps.
 
+### Context Matching
+1. Under the guidance of professional doctors, manually extract (rough recall) text fragments potentially related to disease diagnosis and treatment from guideline books as context candidates.
+2. For each QA data, for each context candidate related to its disease, concatenate [Q, A, context candidate] text fragments and use a large language model to judge the match (ask ChatGPT if the context fragment is directly related to the QA dialogue or serves as a basis for the doctor's answer); the matched context candidate becomes the dataset's context.
+3. In some data, randomly select context candidates for non-related diseases for the aforementioned QA-context matching, mixing matched contexts into the context of that QA as distractors to appropriately increase task difficulty.
+4. Perform manual verification of the data, adding any missed context recalls.
 
-### Context匹配
-1. 根据专业医生的指导，从指南书籍材料人工抽取（粗召回）一些可能与疾病诊疗相关的文本片段，作为context候选项。
-2. 对一条QA数据，对其相关疾病的每一条context候选项，都拼接【Q、A、context候选项】文本片段，采用大语言模型进行匹配判断（问ChatGPT该context片段是否与该问答对话直接相关或为医生回答的依据）；将匹配的context候选项作为数据集的context。
-3. 在一些数据中，随机选择非相关疾病的context候选项也进行如上述的QA-context匹配，将匹配到的context也混合至上述该条QA的context中，作为干扰项适当提高任务难度。
-4. 对数据进行人工校验，补充漏召回的context。
+## Usage Instructions
 
+### Data Format
 
-## 使用说明
+Questions, documents, and answers are all stored in plain text format, provided in JsonLines format.
 
-### 数据格式
+The dataset is divided into 3 files, with the training set and validation set used for model training and validation, and the test set used for model inference metric evaluation.
 
-问题、文档和答案均以纯文本形式存储，以JsonLines格式提供。
+- **train**: Training set
+- **valid**: Validation set
+- **test**: Test set
 
-数据集中划分为3个文件，其中训练集和验证集用于模型训练和验证，测试集用于模型推理指标评测。
+Specific fields for each file include:
 
-- **train**：训练集
-- **valid**: 验证集
-- **test**: 测试集
+- **Data ID**: id
+- **Question**: Question
+- **Context**: Reference text
+- **Answer**: Answer
+- **Disease**: Diagnosed disease
+- **Advice**: Diagnostic and therapeutic advice
 
-每个文件的具体字段包括：
+### Inference Evaluation Metrics
 
-- **数据标号**：id
-- **Question**: 问题
-- **Context**: 参考文本
-- **Answer**: 答案
-- **Disease**：诊断疾病
-- **Advice**：诊疗建议
-
-### 推理评估指标
-
-本数据集设计的评测任务主要目标是针对基于虚拟患者问题以及专科医生回答，待评测模型需参考医生给出的相关医学知识作为context，比较模型产出的回答结果与专科医生回答结果的一致性。具体评估指标设计如下：
+The evaluation task designed for this dataset mainly aims to compare the consistency of the model's output with the answers of specialist doctors, based on virtual patient questions and doctors' answers. The model needs to refer to the medical knowledge provided by the doctor as context. The specific evaluation metrics are as follows:
 
 1. **F1 Score**:
    - Precision (P): \( P = \frac{TP}{TP + FP} \)
@@ -64,12 +67,21 @@ RJUA-QA数据集共含2132个问答对，每对问答由医生根据临床经验
    - R (Recall): \( R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)} \)
    - Rouge-L: \( \text{Rouge-L} = \frac{2PR}{P + R} \)
 
-### 引用
+### Citation
 
-如果你觉得我们的工作有帮助的话，使用了我们的数据集，请引用下列说明，后续我们会持续优化数据集，并更新可引用的arxiv论文。
-> Lyu, S., Chi, C., Cai, H., Shi, L., Yang, X., Liu, L., Chen, X., Zhao, D., Zhang, Z., Lyu, X., Zhang, M., Li, F., Ma, X., Shen, Y., Gu, J., Xue, W., & Huang, Y. 2023. RJUA-QA: A Comprehensive QA Dataset for Urology. arXiv:2312.09785.
+If you find our work helpful and have used our dataset, please cite the following description. We will continue to optimize the dataset and update the citable arXiv paper.
 
-如有任何关于数据集的问题或建议，请通过以下方式与我们联系: chichenfei@renji.com, huangyiran@renji.com, hongbo.chb@antgroup.com, zhanying@antgroup.com
+```bibtex
+@misc{lyu2023rjuaqa,
+      title={RJUA-QA: A Comprehensive QA Dataset for Urology}, 
+      author={Shiwei Lyu and Chenfei Chi and Hongbo Cai and Lei Shi and Xiaoyan Yang and Lei Liu and Xiang Chen and Deng Zhao and Zhiqiang Zhang and Xianguo Lyu and Ming Zhang and Fangzhou Li and Xiaowei Ma and Yue Shen and Jinjie Gu and Wei Xue and Yiran Huang},
+      year={2023},
+      eprint={2312.09785},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
 
-**注意**：在使用数据集时，请确保遵循相关法律法规和数据隐私政策。
+For any questions or suggestions about the dataset, please contact us at: chichenfei@renji.com, huangyiran@renji.com, hongbo.chb@antgroup.com, zhanying@antgroup.com
 
+**Note**: When using the dataset, please ensure compliance with relevant laws, regulations, and data privacy policies.

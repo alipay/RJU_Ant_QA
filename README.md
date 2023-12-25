@@ -82,6 +82,10 @@ If you find our work helpful and have used our dataset, please cite the followin
 }
 ```
 
+### Download
+
+You can download the dataset from the project [QJUA-QA](http://openkg.cn/dataset/rjua-qadatasets) at openkg.
+
 For any questions or suggestions about the dataset, please contact us at: chichenfei@renji.com, huangyiran@renji.com, hongbo.chb@antgroup.com, zhanying@antgroup.com
 
 **Note**: When using the dataset, please ensure compliance with relevant laws, regulations, and data privacy policies.

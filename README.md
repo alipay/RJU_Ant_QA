@@ -57,15 +57,15 @@ Specific fields for each file include:
 The evaluation task designed for this dataset mainly aims to compare the consistency of the model's output with the answers of specialist doctors, based on virtual patient questions and doctors' answers. The model needs to refer to the medical knowledge provided by the doctor as context. The specific evaluation metrics are as follows:
 
 1. **F1 Score**:
-   - Precision (P): \( P = \frac{TP}{TP + FP} \)
-   - Recall (R): \( R = \frac{TP}{TP + FN} \)
-   - F1 Score: \( F1 = \frac{2PR}{P + R} \)
-   - Average F1 Score: \( F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right) \)
+   - Precision (P): $ P = \frac{TP}{TP + FP} $
+   - Recall (R): $ R = \frac{TP}{TP + FN} $
+   - F1 Score: $ F1 = \frac{2PR}{P + R} $
+   - Average F1 Score: $ F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right) $
 
 2. **RougeL Score**:
-   - P (Precision): \( P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)} \)
-   - R (Recall): \( R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)} \)
-   - Rouge-L: \( \text{Rouge-L} = \frac{2PR}{P + R} \)
+   - P (Precision): $ P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)} $
+   - R (Recall): $ R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)} $
+   - Rouge-L: $ \text{Rouge-L} = \frac{2PR}{P + R} $
 
 ### Citation
 

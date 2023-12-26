@@ -58,15 +58,27 @@ RJUA-QA数据集共含2132个问答对，每对问答由医生根据临床经验
 本数据集设计的评测任务主要目标是针对基于虚拟患者问题以及专科医生回答，待评测模型需参考医生给出的相关医学知识作为context，比较模型产出的回答结果与专科医生回答结果的一致性。具体评估指标设计如下：
 
 1. **F1 Score**:
-   - Precision (P): \( P = \frac{TP}{TP + FP} \)
-   - Recall (R): \( R = \frac{TP}{TP + FN} \)
-   - F1 Score: \( F1 = \frac{2PR}{P + R} \)
-   - Average F1 Score: \( F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right) \)
+   - Precision (P): 
+   <center> <img src="https://latex.codecogs.com/svg.latex?\small&space;P=\frac{TP}{TP+FP}" alt="P = \frac{TP}{TP + FP}" /> </center> 
+
+   - Recall (R):
+   <center>  <img src="https://latex.codecogs.com/svg.latex?\small&space;R=\frac{TP}{TP+FN}" alt="R = \frac{TP}{TP + FN}" /> </center> 
+
+   - F1 Score: 
+   <center> <img src="https://latex.codecogs.com/svg.latex?\small&space;F1=\frac{2PR}{P+R}" alt="F1 = \frac{2PR}{P + R}" /> </center> 
+   
+   - Average F1 Score: 
+   <center> <img src="https://latex.codecogs.com/svg.latex?\small&space;F1=\text{average}\left(\frac{2\times{F1_{\text{disease}}}+F1_{\text{advice}}}{3}\right)" alt="F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right)" /> </center> 
 
 2. **RougeL Score**:
-   - P (Precision): \( P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)} \)
-   - R (Recall): \( R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)} \)
-   - Rouge-L: \( \text{Rouge-L} = \frac{2PR}{P + R} \)
+   - P (Precision): 
+   <center> <img src="https://latex.codecogs.com/svg.latex?\small&space;P=\frac{\text{LCS}(S1,S2)}{\text{len}(S1)}" alt="P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)}" /></center> 
+
+   - R (Recall): 
+   <center> <img src="https://latex.codecogs.com/svg.latex?\small&space;R=\frac{\text{LCS}(S1,S2)}{\text{len}(S2)}" alt="R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)}" /></center> 
+
+   - Rouge-L: 
+   <center> <img src="https://latex.codecogs.com/svg.latex?\small&space;\text{Rouge-L}=\frac{2PR}{P+R}" alt="\text{Rouge-L} = \frac{2PR}{P + R}" /></center> 
 
 ### 引用
 

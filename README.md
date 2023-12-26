@@ -57,15 +57,15 @@ Specific fields for each file include:
 The evaluation task designed for this dataset mainly aims to compare the consistency of the model's output with the answers of specialist doctors, based on virtual patient questions and doctors' answers. The model needs to refer to the medical knowledge provided by the doctor as context. The specific evaluation metrics are as follows:
 
 1. **F1 Score**:
-   - Precision (P): $ P = \frac{TP}{TP + FP} $
-   - Recall (R): $ R = \frac{TP}{TP + FN} $
-   - F1 Score: $ F1 = \frac{2PR}{P + R} $
-   - Average F1 Score: $ F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right) $
+   - Precision (P): <img src="https://latex.codecogs.com/svg.latex?\small&space;P=\frac{TP}{TP+FP}" alt="P = \frac{TP}{TP + FP}" />
+   - Recall (R): <img src="https://latex.codecogs.com/svg.latex?\small&space;R=\frac{TP}{TP+FN}" alt="R = \frac{TP}{TP + FN}" />
+   - F1 Score: <img src="https://latex.codecogs.com/svg.latex?\small&space;F1=\frac{2PR}{P+R}" alt="F1 = \frac{2PR}{P + R}" />
+   - Average F1 Score: <img src="https://latex.codecogs.com/svg.latex?\small&space;F1=\text{average}\left(\frac{2\times{F1_{\text{disease}}}+F1_{\text{advice}}}{3}\right)" alt="F1 = \text{average}\left(\frac{2 \times F1_{\text{disease}} + F1_{\text{advice}}}{3}\right)" />
 
 2. **RougeL Score**:
-   - P (Precision): $ P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)} $
-   - R (Recall): $ R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)} $
-   - Rouge-L: $ \text{Rouge-L} = \frac{2PR}{P + R} $
+   - P (Precision): <img src="https://latex.codecogs.com/svg.latex?\small&space;P=\frac{\text{LCS}(S1,S2)}{\text{len}(S1)}" alt="P = \frac{\text{LCS}(S1, S2)}{\text{len}(S1)}" />
+   - R (Recall): <img src="https://latex.codecogs.com/svg.latex?\small&space;R=\frac{\text{LCS}(S1,S2)}{\text{len}(S2)}" alt="R = \frac{\text{LCS}(S1, S2)}{\text{len}(S2)}" />
+   - Rouge-L: <img src="https://latex.codecogs.com/svg.latex?\small&space;\text{Rouge-L}=\frac{2PR}{P+R}" alt="\text{Rouge-L} = \frac{2PR}{P + R}" />
 
 ### Citation
 

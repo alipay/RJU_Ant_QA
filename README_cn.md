@@ -96,7 +96,7 @@ RJUA-QA数据集共含2132个问答对，每对问答由医生根据临床经验
 ```
 ### 数据集下载
 
-您可以在OpenKG的[QJUA-QA](http://openkg.cn/dataset/rjua-qadatasets)下载本数据集
+您可以在OpenKG的[QJUA-QA](http://data.openkg.cn/dataset/rjua-qadatasets)下载本数据集
 
 如有任何关于数据集的问题或建议，请通过以下方式与我们联系：chichenfei@renji.com，huangyiran@renji.com, hongbo.chb@antgroup.com , zhanying@antgroup.com
 
